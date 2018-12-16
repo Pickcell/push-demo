@@ -1,0 +1,115 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>
+            <img src="/assets/pickcell-logo-icon-white.png" style="width: 36px;">
+        </ion-title>
+        <!--<ion-buttons slot="end">-->
+        <!--<ion-button shape="round" fill="outline" color="light" (click)="authService.login()"-->
+        <!--*ngIf="!authService.isLoggedIn">Login-->
+        <!--</ion-button>-->
+        <!--<ion-button shape="round" fill="outline" color="light" (click)="authService.logout()"-->
+        <!--*ngIf="authService.isLoggedIn">Logout-->
+        <!--</ion-button>-->
+        <!--</ion-buttons>-->
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!--<ion-card>-->
+    <!--<ion-img src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"></ion-img>-->
+    <!--<ion-card-header>-->
+    <!--<ion-card-subtitle>Card Subtitle</ion-card-subtitle>-->
+    <!--<ion-card-title color="primary">Messages</ion-card-title>-->
+    <!--</ion-card-header>-->
+    <!--</ion-card>-->
+
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" size-md>
+                <ion-card padding class="head-card card1" (click)="openMessage()">
+                    <ion-card-content text-center no-margin no-padding>
+                        <img src="/assets/undraw_mail_2_tqip.svg">
+                    </ion-card-content>
+                    <ion-card-header no-padding padding-top>
+                        <ion-card-subtitle>Recent</ion-card-subtitle>
+                        <ion-card-title color="success">Messages</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+            <ion-col size="12" size-md>
+                <ion-card padding class="head-card card2">
+                    <ion-card-content text-center no-margin no-padding>
+                        <img src="/assets/undraw_profile_pic_ic5t.svg">
+                    </ion-card-content>
+                    <ion-card-header no-padding padding-top>
+                        <ion-card-subtitle>Personalisation</ion-card-subtitle>
+                        <ion-card-title color="primary">Profile</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid class="boxButtons">
+        <ion-row>
+            <ion-col size="6" col-sm>
+                <ion-card padding>
+                    <ion-card-content text-center no-margin no-padding>
+                        <ion-icon name="pricetags"></ion-icon>
+                        <h5>Tags</h5>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col site="6" col-sm>
+                <ion-card padding>
+                    <ion-card-content text-center no-margin no-padding>
+                        <ion-icon name="people"></ion-icon>
+                        <h5>Groups</h5>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col site="6" col-sm>
+                <ion-card padding>
+                    <ion-card-content text-center no-margin no-padding>
+                        <ion-icon ios="md-person" md="md-person"></ion-icon>
+                        <h5>Team</h5>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col site="6" col-sm>
+                <ion-card padding>
+                    <ion-card-content text-center no-margin no-padding>
+                        <img src="http://www.gravatar.com/avatar/17a1c0a408526ab825e7bd252f431b4a">
+                        <h5>Profile</h5>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <!--<ion-card *ngFor="let person of people; let i = index">-->
+    <!--<ion-img [src]="person.picture.large"></ion-img>-->
+    <!--<ion-card-header>-->
+    <!--<ion-card-subtitle>Card Subtitle</ion-card-subtitle>-->
+    <!--<ion-card-title>{{ person.name?.title | capitalize }} {{ person.name?.first | capitalize }}-->
+    <!--{{person.name?.last | capitalize }}-->
+    <!--</ion-card-title>-->
+    <!--</ion-card-header>-->
+    <!--<ion-card-content>-->
+    <!--<p>The content for this card The content for this card The content for this card The content for this-->
+    <!--card</p>-->
+    <!--<ion-button size="small" (click)="openPerson(i)">Small Button</ion-button>-->
+    <!--</ion-card-content>-->
+    <!--</ion-card>-->
+
+    <!--<ion-list>-->
+    <!--<ion-item *ngFor="let person of people; let i = index" (click)="openPerson(i)">-->
+    <!--<ion-avatar slot="start">-->
+    <!--<img [src]="person.picture.thumbnail" />-->
+    <!--</ion-avatar>-->
+    <!--<ion-label>-->
+    <!--<h2>{{ person.name?.title | capitalize }} {{ person.name?.first | capitalize }} {{person.name?.last | capitalize }}</h2>-->
+    <!--</ion-label>-->
+    <!--</ion-item>-->
+    <!--</ion-list>-->
+</ion-content>
