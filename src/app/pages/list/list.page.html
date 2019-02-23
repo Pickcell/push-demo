@@ -1,28 +1,85 @@
+<!--<ion-header>-->
+    <!--<ion-toolbar color="primary">-->
+        <!--<ion-buttons slot="start">-->
+            <!--<ion-back-button></ion-back-button>-->
+        <!--</ion-buttons>-->
+        <!--<ion-title>-->
+            <!--<img src="/assets/pickcell-logo-icon-white.png" style="width: 36px;">-->
+        <!--</ion-title>-->
+        <!--<ion-buttons slot="end">-->
+            <!--<ion-button (click)="toggleSearch()" [ngClass]="{'activated': showSearch}">-->
+                <!--<ion-icon slot="icon-only" name="search"></ion-icon>-->
+            <!--</ion-button>-->
+        <!--</ion-buttons>-->
+    <!--</ion-toolbar>-->
+    <!--<ion-toolbar *ngIf="!showSearch">-->
+        <!--<ion-segment>-->
+            <!--<ion-segment-button value="all" checked>-->
+                <!--All-->
+            <!--</ion-segment-button>-->
+            <!--<ion-segment-button value="favorites">-->
+                <!--Favorites-->
+            <!--</ion-segment-button>-->
+        <!--</ion-segment>-->
+    <!--</ion-toolbar>-->
+<!--</ion-header>-->
+
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>
-      <img src="/assets/pickcell-logo-icon-white.png" style="width: 36px;">
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-segment [(ngModel)]="segment">
+            <ion-segment-button value="all" checked>
+                All
+            </ion-segment-button>
+            <ion-segment-button value="favorites">
+                Favorites
+            </ion-segment-button>
+        </ion-segment>
+
+        <ion-buttons slot="end">
+            <ion-button (click)="presentFilter()">
+                <ion-icon slot="icon-only" name="options"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-toolbar>
+        <ion-searchbar [(ngModel)]="queryText" (ionChange)="updateSchedule()" placeholder="Search"></ion-searchbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item-sliding *ngFor="let item of messages; let i = index" (click)="openMessage(i)">
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjYzVkYmZmIiBkPSJNMCAwaDUxMnY1MTJIMHoiLz48cGF0aCBkPSJNMjU2IDMwNGM2MS42IDAgMTEyLTUwLjQgMTEyLTExMlMzMTcuNiA4MCAyNTYgODBzLTExMiA1MC40LTExMiAxMTIgNTAuNCAxMTIgMTEyIDExMnptMCA0MGMtNzQuMiAwLTIyNCAzNy44LTIyNCAxMTJ2NTZoNDQ4di01NmMwLTc0LjItMTQ5LjgtMTEyLTIyNC0xMTJ6IiBmaWxsPSIjODJhZWZmIi8+PC9zdmc+">
-        </ion-avatar>
-        <ion-label>
-          <ion-text>
-            <h2>{{item.config.message}}</h2>
-          </ion-text>
-          <p>{{item.created_at}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item, $event)">Unread</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+    <ion-searchbar value="Search" *ngIf="showSearch"></ion-searchbar>
+    <ion-list>
+        <ion-item-group>
+            <ion-item-divider sticky>
+                <ion-label>
+                    Group
+                </ion-label>
+            </ion-item-divider>
+            <ion-item-sliding *ngFor="let item of messages" (click)="openMessage(item.id)">
+                <ion-item>
+                    <ion-avatar slot="start">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjYzVkYmZmIiBkPSJNMCAwaDUxMnY1MTJIMHoiLz48cGF0aCBkPSJNMjU2IDMwNGM2MS42IDAgMTEyLTUwLjQgMTEyLTExMlMzMTcuNiA4MCAyNTYgODBzLTExMiA1MC40LTExMiAxMTIgNTAuNCAxMTIgMTEyIDExMnptMCA0MGMtNzQuMiAwLTIyNCAzNy44LTIyNCAxMTJ2NTZoNDQ4di01NmMwLTc0LjItMTQ5LjgtMTEyLTIyNC0xMTJ6IiBmaWxsPSIjODJhZWZmIi8+PC9zdmc+">
+                    </ion-avatar>
+                    <ion-label>
+                        <ion-text>
+                            <h2>{{item.config.message}}</h2>
+                        </ion-text>
+                        <p>{{item.created_at}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item-options>
+                    <ion-item-option color="primary" (click)="unread(item, $event)">
+                        Favorite
+                    </ion-item-option>
+                    <ion-item-option color="danger" (click)="unread(item, $event)">
+                        Remove
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-item-group>
+    </ion-list>
 </ion-content>

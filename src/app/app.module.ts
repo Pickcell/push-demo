@@ -21,7 +21,7 @@ import { DataService } from './services/data/data.service';
     AppPipesModule,
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     StatusBar,

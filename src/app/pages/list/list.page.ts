@@ -9,6 +9,7 @@ import { NavController } from '@ionic/angular';
 })
 export class ListPage implements OnInit {
   messages: Array<any> = [];
+  showSearch = false;
 
   constructor(private navCtrl: NavController, private dataService: DataService) {
   }
@@ -17,7 +18,6 @@ export class ListPage implements OnInit {
     this.dataService.getPeopleList()
       .subscribe((people: any) => {
         this.messages = people;
-        console.log(this.messages);
       });
   }
 
@@ -28,8 +28,12 @@ export class ListPage implements OnInit {
 
   unread(item, ev) {
     ev.stopPropagation();
-    console.log(ev, item);
   }
+
+  toggleSearch() {
+    this.showSearch = !this.showSearch;
+  }
+
   // add back when alpha.4 is out
   // navigate(item) {
   //   this.router.navigate(['/list', JSON.stringify(item)]);

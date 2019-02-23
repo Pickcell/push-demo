@@ -19,17 +19,22 @@ export class DataService {
     const url = '/assets/files/messages.json';
     return this.http.get(url)
       .pipe(
+        map((people: any) => {
+          return people.map(p => {
+            p.created_at = new Date(p.created_at);
+            return p;
+          });
+        }),
         tap(people => this.people = people),
       );
   }
 
   getPerson(index) {
-    if (!this.people[index]) {
-      return this.getPeopleList()
-        .pipe(
-          map(people => this.people[index])
-        );
-    }
-    return observableOf(this.people[index]);
+    // if (!this.people[index]) {
+    return this.getPeopleList()
+      .pipe(
+        map(() => this.people.filter(p => p.id.toString() === index)[0])
+      );
+    // return observableOf(this.people[index]);
   }
 }

@@ -20,10 +20,9 @@ export class ViewMessagePage implements OnInit {
 
   ngOnInit() {
     this.route.paramMap
-      .pipe(
-        switchMap((params: ParamMap) => this.dataService.getPerson(params.get('id')))
-      ).subscribe(message => {
-      this.message = message;
-    });
+      .pipe(switchMap((params: ParamMap) => this.dataService.getPerson(params.get('id'))))
+      .subscribe(message => {
+        this.message = message;
+      });
   }
 }
